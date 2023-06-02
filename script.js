@@ -19,6 +19,14 @@ function bindData(articles) {
 
     cardsContainer.innerHTML = "";
 
+    if (!articles || articles.length === 0) {
+        // Handle the case when no articles are available
+        const noArticlesMsg = document.createElement("p");
+        noArticlesMsg.innerText = "No articles found.";
+        cardsContainer.appendChild(noArticlesMsg);
+        return;
+    }
+
     articles.forEach((article) => {
         if (!article.urlToImage) return;
         const cardClone = newsCardTemplate.content.cloneNode(true);
